@@ -4,11 +4,12 @@
 *Dwayne
 *Jonatan
 *Alcides 4-0267-0686
-*v1.0
+*v1.1
 */
-
+#include "Mazo.h"
 int main() {
-
+	Mazo mazo;
+	mazo.inicializar();
 	return 0;
 }
 

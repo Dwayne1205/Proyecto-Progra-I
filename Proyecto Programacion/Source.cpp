@@ -8,8 +8,6 @@
 */
 #include "Mazo.h"
 int main() {
-	Mazo mazo;
-	mazo.inicializar();
 	return 0;
 }
 

@@ -128,11 +128,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Carta.cpp" />
+    <ClCompile Include="Jugador.cpp" />
+    <ClCompile Include="JugadorGenerico.cpp" />
+    <ClCompile Include="Mano.cpp" />
     <ClCompile Include="Mazo.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Carta.h" />
+    <ClInclude Include="Jugador.h" />
+    <ClInclude Include="JugadorGenerico.h" />
+    <ClInclude Include="Mano.h" />
     <ClInclude Include="Mazo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,5 +1,8 @@
 #include "Jugador.h"
 Jugador::Jugador(std::string nickname) : JugadorGenerico(nickname) {}
+Jugador::~Jugador() {
+    delete mano;
+}
 Carta* Jugador::pedirCarta(Mazo* mazo){
     Carta* nuevaCarta = nullptr;
 

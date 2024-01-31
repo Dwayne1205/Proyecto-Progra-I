@@ -19,4 +19,3 @@ public:
 	void sacarDelMazo(int n);
 };
 #endif
-

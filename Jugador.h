@@ -3,6 +3,8 @@
 #include "JugadorGenerico.h"
 class Jugador:public JugadorGenerico{
 public:
+	Jugador(std::string nick);
+	~Jugador();
 	Carta* pedirCarta(Mazo* mazo)override;
 };
 #endif

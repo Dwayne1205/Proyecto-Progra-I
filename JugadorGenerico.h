@@ -15,5 +15,4 @@ public:
     virtual Carta* pedirCarta(Mazo* mazo)=0;
     bool sePaso();
 };
-
 #endif

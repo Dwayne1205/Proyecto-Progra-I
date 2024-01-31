@@ -1,4 +1,8 @@
 #include "Jugador.h"
+Jugador::Jugador(std::string nickname) : JugadorGenerico(nickname) {}
+Jugador::~Jugador() {
+    delete mano;
+}
 Carta* Jugador::pedirCarta(Mazo* mazo){
     Carta* nuevaCarta = nullptr;
 
@@ -10,6 +14,5 @@ Carta* Jugador::pedirCarta(Mazo* mazo){
     else {
         std::cout << nickname << " no puede recibir más cartas porque se pasó de 21" << std::endl;
     }
-
     return nuevaCarta;
 }

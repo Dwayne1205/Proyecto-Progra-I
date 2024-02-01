@@ -5,8 +5,9 @@ Dealer::~Dealer(){
 	delete mano;
 }
 Carta* Dealer::pedirCarta(Mazo* mazo) {
-	while(mano->getPuntos()<=16) mano->agregarCarta(mazo);
+	if (mano->getPuntos()<=16) mano->agregarCarta(mazo);
+	return mano->ultimaCarta();
 }
-void Dealer::volteaSegunda() {//
-	
+void Dealer::volteaSegunda() {
+	mano->voltearCarta(1);
 }

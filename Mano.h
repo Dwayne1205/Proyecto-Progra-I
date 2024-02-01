@@ -12,9 +12,11 @@ private:
 public:
     Mano();
     ~Mano();
-    void agregarCarta(Mazo* mazo);
+    void agregarCarta(Mazo*);
     void limpiar();
     int getPuntos();
+    Carta** getCartas();
+    void voltearCarta(int); 
+    Carta* ultimaCarta();
 };
-
 #endif

@@ -6,7 +6,7 @@
 *Alcides 4-0267-0686
 *v1.2
 */
-#include "Mazo.h"
+#include "Lista.h"
 int main() {
 	return 0;
 }

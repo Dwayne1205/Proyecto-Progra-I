@@ -53,3 +53,15 @@ int Mano::getPuntos() {
 
     return puntos;
 }
+
+Carta** Mano::getCartas() {
+	return cartas;
+}
+
+void Mano::voltearCarta(int n) {
+    cartas[n]->voltear();
+}
+
+Carta* Mano::ultimaCarta() {
+	return cartas[numCartas - 1];
+}

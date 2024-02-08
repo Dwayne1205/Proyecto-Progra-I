@@ -5,10 +5,11 @@ Mazo::Mazo() :can(52), tam(52), cartas(new Carta* [52]) {
 	}
 }
 Mazo::~Mazo() {
-	for (int i = 0; i < 52; i++) {//se limpian las 52 casillas del arreglo.
+	for (int i = 0; i < can; i++) {//se limpian las 52 casillas del arreglo.
 		if (cartas[i] != nullptr) delete cartas[i];
 	}
 	delete[] cartas;
+	cartas = nullptr;
 }
 void Mazo::inicializar() {
 	for (int i = 0; i < 4; i++) {
@@ -23,11 +24,11 @@ void Mazo::inicializar() {
 	}
 }
 void Mazo::barajear() {//Método encargado de barajear las cartas del mazo
-	for (int i = 0; i < 52; i++) {
+	for (int i = 0; i < can; i++) {
 		//RNG
 		std::random_device rd;
 		std::mt19937 gen(rd());
-		std::uniform_int_distribution<int> distribution1(0, 51);
+		std::uniform_int_distribution<int> distribution1(0, can-1);
 		int random1 = distribution1(gen);
 		//Intercambio de cartas
 		Carta* aux = cartas[i];

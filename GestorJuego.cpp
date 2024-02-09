@@ -1,19 +1,19 @@
 #include "GestorJuego.h"
 
 GestorJuego::GestorJuego() {}
-GestorJuego::GestorJuego(int cJ):canJugadores{cJ}{}
+GestorJuego::GestorJuego(int cJ, Juego* j):canJugadores{cJ}, juego{j}{}
 
-void GestorJuego::empezarPartida(Juego* j) {
+void GestorJuego::empezarPartida() {
 
-	j->getBaraja()->inicializar();
-	j->getBaraja()->barajear();
+	juego->getBaraja()->inicializar();
+	juego->getBaraja()->barajear();
 
 }
 GestorJuego::~GestorJuego() {}
 
-void GestorJuego::Ronda(Juego* j, Nodo* x) {//Para pedir carta...
+void GestorJuego::Ronda(Nodo* x) {//Para pedir carta...
 
-	Nodo* nodoAux = j->getListaJugadores()->getInicio();
+	Nodo* nodoAux = juego->getListaJugadores()->getInicio();
 	while (nodoAux != nullptr) {
 		if (nodoAux == x) {
 			nodoAux->getJugador()->pedirCarta();	

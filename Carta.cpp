@@ -5,6 +5,8 @@ Carta::Carta() : num(0), palo(0), bocaAbajo(false) {}
 Carta::~Carta() {}
 void Carta::setNum(int n) { num = n; }
 void Carta::setPalo(int p) { palo = p; }
+int Carta::getPalo() { return palo; }
+bool Carta::getBocaAbajo() { return bocaAbajo; }
 void Carta::setBocaAbajo(bool bA) { bocaAbajo = bA; }
 void Carta::voltear() { bocaAbajo = !bocaAbajo; }
 int Carta::getNum() { if (num < 11) { return num; } else return 10; }
@@ -58,3 +60,5 @@ std::string Carta::toString() {//Método toString
 	}
 	return s.str();
 }
+
+int Carta::valorCarta() { return num; }

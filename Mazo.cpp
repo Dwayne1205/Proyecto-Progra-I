@@ -48,11 +48,9 @@ Carta* Mazo::tomarCarta() {
 	return aux;
 }
 void Mazo::sacarDelMazo(int n) {//Método encargado de eliminar del arreglo de cartas, la carta que sale del mazo
-	Carta* aux = cartas[n];
 	cartas[n] = nullptr;
 	for (int i = n; i < can; i++) {//Acomoda todos los elementos en el arreglo que estén a la derecha de la carta eliminada
 		//se mueven hacia la izquierda
 		cartas[i] = cartas[i + 1];
 	}
-	cartas[--can]=aux;
 }

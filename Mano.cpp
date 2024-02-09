@@ -23,9 +23,18 @@ void Mano::agregarCarta(Mazo* mazo) {
         std::cout << "La mano está llena" << std::endl;
     }
 }
+void Mano::agregarCarta(Carta* carta) {//agrega una carta que recibe como parámetro
+    if (numCartas < maxCartas) {
+		cartas[numCartas++] = carta;
+	}
+    else {
+		std::cout << "La mano está llena" << std::endl;
+	}
+}
 
 void Mano::limpiar() {
     for (int i = 0; i < numCartas; ++i) {
+        delete cartas[i];
         cartas[i] = nullptr;
     }
     numCartas = 0;
@@ -58,10 +67,12 @@ Carta** Mano::getCartas() {
 	return cartas;
 }
 
+int Mano::getNumCartas() { return numCartas; }
+
 void Mano::voltearCarta(int n) {
     cartas[n]->voltear();
 }
 
 Carta* Mano::ultimaCarta() {
-	return cartas[numCartas - 1];
+    return cartas[numCartas - 1];
 }

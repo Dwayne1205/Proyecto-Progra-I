@@ -13,9 +13,11 @@ public:
     Mano();
     ~Mano();
     void agregarCarta(Mazo*);
+    void agregarCarta(Carta*);
     void limpiar();
     int getPuntos();
     Carta** getCartas();
+    int getNumCartas();
     void voltearCarta(int); 
     Carta* ultimaCarta();
 };

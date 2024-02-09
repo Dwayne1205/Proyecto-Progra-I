@@ -1,10 +1,10 @@
 /*
 *Proyecto programacion 1 
-* Blackjack
+*Blackjack
 *Dwayne
 *Jonatan
 *Alcides 4-0267-0686
-*v1.2
+*v1.3
 */
 #include<iostream>
 #include "Juego.h"

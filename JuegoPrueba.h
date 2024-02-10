@@ -10,8 +10,8 @@ class JuegoP {
 
 public:
 
-	Juego();
-	~Juego();
+	JuegoP();
+	~JuegoP();
 	void Jugadores(JugadorGenerico*);
 	void SacarJugador(Nodo*);
 	void Dealer();

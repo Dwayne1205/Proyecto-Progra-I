@@ -5,7 +5,7 @@ class GestorP {
 
 public:
 
-	GestorP(Juego*);
+	GestorP(JuegoP*);
 	GestorP();
 	~GestorP();
 	void empezarPartida();

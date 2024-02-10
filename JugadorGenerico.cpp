@@ -8,3 +8,6 @@ JugadorGenerico::~JugadorGenerico() {
 bool JugadorGenerico::sePaso() {
     return mano->getPuntos() > 21;
 }
+Mano* JugadorGenerico::getMano() { return mano; }
+
+std::string JugadorGenerico::getNombre() { return nickname; }

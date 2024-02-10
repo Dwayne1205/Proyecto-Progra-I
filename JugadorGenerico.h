@@ -14,5 +14,7 @@ public:
     virtual ~JugadorGenerico();
     virtual Carta* pedirCarta(Mazo* mazo)=0;
     bool sePaso();
+    Mano* getMano();
+    std::string getNombre();
 };
 #endif

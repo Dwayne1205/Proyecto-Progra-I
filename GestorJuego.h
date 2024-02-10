@@ -5,15 +5,19 @@ class GestorJuego {
 
 public:
 
-	GestorJuego(int);
+	GestorJuego(Juego*);
 	GestorJuego();
 	~GestorJuego();
-	void empezarPartida(Juego*);
-	void Ronda(Juego*,Nodo*);
+	void empezarPartida();
+	void Ronda(Nodo*);
+	void mostrarMenu();
+	void dibujarOpsRonda();
+	void repartir();
+	Nodo* encontrarJugador(const std::string&);
 
 private:
 	int canJugadores;
-
+	Juego* juego;
 };
 
 

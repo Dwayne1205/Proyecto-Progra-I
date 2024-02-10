@@ -26,3 +26,4 @@ Carta* JugadorGenerico::getCarta(int n) {
 int JugadorGenerico::numeroCartas() { return mano->getNumCartas(); }
 
 void JugadorGenerico::agregarCarta(Carta* carta) { mano->agregarCarta(carta); }
+

@@ -21,5 +21,6 @@ public:
     Carta* getCarta(int);
     int numeroCartas();
     void agregarCarta(Carta*);
+
 };
 #endif

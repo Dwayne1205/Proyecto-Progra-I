@@ -17,10 +17,13 @@ public:
 	~Carta();
 	void setNum(int);
 	void setPalo(int);
+	int getPalo();
+	bool getBocaAbajo();
 	void setBocaAbajo(bool);
 	int getNum();
 	void voltear();
 	std::string toString();
+	int valorCarta();
 };
 
 

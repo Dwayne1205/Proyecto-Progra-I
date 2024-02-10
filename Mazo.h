@@ -3,6 +3,7 @@
 #include "Carta.h"
 #include<random>//Biblioteca para generar numeros aleatorios.
 #include<iostream>
+#include <fstream>
 
 class Mazo {
 private:
@@ -17,5 +18,7 @@ public:
 	void barajear();
 	Carta* tomarCarta();
 	void sacarDelMazo(int n);
+	void guardarMazo();
+	void cargarMazo();
 };
 #endif

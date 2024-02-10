@@ -48,11 +48,52 @@ Carta* Mazo::tomarCarta() {
 	return aux;
 }
 void Mazo::sacarDelMazo(int n) {//Método encargado de eliminar del arreglo de cartas, la carta que sale del mazo
-	Carta* aux = cartas[n];
 	cartas[n] = nullptr;
 	for (int i = n; i < can; i++) {//Acomoda todos los elementos en el arreglo que estén a la derecha de la carta eliminada
 		//se mueven hacia la izquierda
 		cartas[i] = cartas[i + 1];
 	}
-	cartas[--can]=aux;
+}
+
+void Mazo::guardarMazo() {
+	std::ofstream archivo("Mazo.txt");
+	if (!archivo.is_open()) {
+		std::cout<<"No se pudo abrir el archivo"<<std::endl;
+		return;
+	}
+	for (int i = 0; i < can; i++) {
+		archivo << cartas[i]->valorCarta() << ';';
+		archivo << cartas[i]->getPalo() << ';';
+		archivo << cartas[i]->getBocaAbajo() << '\n';
+	}
+	
+	archivo.close();
+}
+
+void Mazo::cargarMazo() {
+	std::ifstream archivo("Mazo.txt");
+	if (!archivo.is_open()) {
+		std::cout << "No se pudo abrir el archivo" << std::endl;
+		return;
+	}
+	std::string buffer;
+	can = 0;
+	while (std::getline(archivo, buffer, '\n')) {
+		std::istringstream linea(buffer);
+		std::string str;
+		std::getline(linea, str, ';');
+		int num = std::stoi(str);
+		std::getline(linea, str, ';');
+		int palo = std::stoi(str);
+		std::getline(linea, str, ';');
+		bool bocaAbajo = std::stoi(str);
+		if (cartas[can] == nullptr)cartas[can] = new Carta(num, palo, bocaAbajo);
+		else {
+			cartas[can]->setNum(num);
+			cartas[can]->setPalo(palo);
+			cartas[can]->setBocaAbajo(bocaAbajo);
+		}
+		can++;
+	}
+	archivo.close();
 }

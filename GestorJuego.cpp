@@ -11,16 +11,6 @@ void GestorJuego::empezarPartida() {
 }
 GestorJuego::~GestorJuego() {}
 
-void GestorJuego::Ronda(Nodo* x) {//Para pedir carta...
-
-	Nodo* nodoAux = juego->getListaJugadores()->getInicio();
-	while (nodoAux != nullptr) {
-		if (nodoAux == x) {
-			nodoAux->getJugador()->pedirCarta();	
-		}
-		nodoAux = nodoAux->getSig();
-	}
-}
 
 Nodo* GestorJuego::encontrarJugador(const std::string& nombreJugador) {
     Nodo* nodoAux = juego->getListaJugadores()->getInicio();
@@ -50,7 +40,7 @@ void GestorJuego::mostrarMenu() {
             switch (opcion) {
             case 1:
                 
-                empezarPartida(juego);
+                empezarPartida();
                 int canJ;
 
                 std::cout << "Ingrese la cantidad de jugadores: " << '\n';
@@ -82,9 +72,6 @@ void GestorJuego::mostrarMenu() {
                         nodoAux->getJugador()->pedirCarta();
                     
                     }
-                    else {
-                        std::cout << "El jugador no se encontró." << std::endl;
-                    }
                 }
                 else {
                     std::cout << "Debe empezar la partida primero." << std::endl;
@@ -114,7 +101,7 @@ void GestorJuego::repartir() {
             nodoAux->getJugador()->getMano()->voltearCarta(1);
 		}
 	}
-}
+
 
 		
 	

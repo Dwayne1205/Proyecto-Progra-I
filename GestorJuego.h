@@ -11,7 +11,6 @@ public:
 	void empezarPartida();
 	void Ronda(Nodo*);
 	void mostrarMenu();
-	void dibujarOpsRonda();
 	void repartir();
 	Nodo* encontrarJugador(const std::string&);
 

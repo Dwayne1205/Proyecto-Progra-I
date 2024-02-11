@@ -9,7 +9,6 @@ public:
 	GestorJuego();
 	~GestorJuego();
 	void empezarPartida();
-	void Ronda(Nodo*);
 	void mostrarMenu();
 	void repartir();
 	Nodo* encontrarJugador(const std::string&);

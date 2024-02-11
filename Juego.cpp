@@ -15,8 +15,8 @@ void Juego::Jugadores(JugadorGenerico* jG) {
 	listaJugadores->insertarInicio(aux);
 }
 
-void Juego::Dealer() {
-	Dealer* d = new Dealer;
+void Juego::DealerSet() {
+	JugadorGenerico* d = new Dealer;
 	Nodo* auxD = new Nodo(d);
 	listaJugadores->insertar(auxD);
 }

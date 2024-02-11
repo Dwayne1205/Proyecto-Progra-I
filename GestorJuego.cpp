@@ -15,7 +15,7 @@ GestorJuego::~GestorJuego() {}
 Nodo* GestorJuego::encontrarJugador(const std::string& nombreJugador) {
     Nodo* nodoAux = juego->getListaJugadores()->getInicio();
     while (nodoAux != nullptr) {
-        if (nodoAux->getJugador()->getNombre() == nombreJugador) {
+        if (nodoAux->getJugador()->getNickname() == nombreJugador) {
             return nodoAux;
         }
         nodoAux = nodoAux->getSig();
@@ -28,7 +28,6 @@ void GestorJuego::mostrarMenu() {
    if(juego){
         int opcion;
         bool pide;
-        
         do {
             std::cout << "----- Menú -----" << std::endl;
             std::cout << "1. Empezar partida" << std::endl;
@@ -53,7 +52,7 @@ void GestorJuego::mostrarMenu() {
                     JugadorGenerico* jG = new Jugador(a);
                     juego->Jugadores(jG);
                 }
-                juego->Dealer();
+                juego->DealerSet();
 
                 std::cout << "El dealer reparte...." << '\n';
                 repartir();
@@ -69,7 +68,7 @@ void GestorJuego::mostrarMenu() {
                         std::cout << " 0:No" << '\n';
                         std::cout << " 1:Si" << '\n';
                         std::cin >> pide;
-                        nodoAux->getJugador()->pedirCarta();
+                        nodoAux->getJugador()->pedirCarta(juego->getBaraja());
                     
                     }
                 }

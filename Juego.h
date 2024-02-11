@@ -14,7 +14,7 @@ public:
 	~Juego();
 	void Jugadores(JugadorGenerico*);
 	void SacarJugador(Nodo*);
-	void Dealer();
+	void DealerSet();
 	Mazo* getBaraja();
 	Lista* getListaJugadores();
 

@@ -11,8 +11,9 @@ public:
 	void empezarPartida();
 	void mostrarMenu();
 	void repartir();
-	Nodo* encontrarJugador(const std::string&);
-
+	void cargarPartida();
+	void guardarPartida();
+	void realizarRonda();
 private:
 	int canJugadores;
 	Juego* juego;

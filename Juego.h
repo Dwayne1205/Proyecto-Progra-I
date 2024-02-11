@@ -15,8 +15,11 @@ public:
 	void Jugadores(JugadorGenerico*);
 	void SacarJugador(Nodo*);
 	void DealerSet();
+	Nodo* encontrarJugador(const std::string&);
 	Mazo* getBaraja();
 	Lista* getListaJugadores();
+	void cargarPartida();
+	void guardarPartida(const std::string& nombreArchivo);
 
 private:
 

@@ -8,7 +8,7 @@ Carta* Jugador::pedirCarta(Mazo* mazo){
 
     if (!sePaso()) {
         nuevaCarta = mazo->tomarCarta();
-        mano->agregarCarta(mazo);
+        mano->agregarCartaM(mazo);
         std::cout << nickname << " tomó una carta: " << nuevaCarta->toString() << std::endl;
     }
     else {

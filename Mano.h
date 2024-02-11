@@ -12,7 +12,8 @@ private:
 public:
     Mano();
     ~Mano();
-    void agregarCarta(Mazo*);
+    std::string toString();
+    void agregarCartaM(Mazo*);
     void agregarCarta(Carta*);
     void limpiar();
     int getPuntos();

@@ -13,8 +13,22 @@ Mano::~Mano() {
     limpiar();
     delete[] cartas;
 }
+// Acá se obtiene una representación de la mano en forma de cadena de caracteres
+std::string Mano::toString() {
+    std::string manoString;
+    for (int i = 0; i < numCartas; ++i) {
+        Carta* carta = cartas[i];
+        // Agrega el número y palo de cada carta a la cadena de caracteres
+        manoString += std::to_string(carta->getNum());
+        manoString += carta->getPalo();
+        if (i < numCartas - 1) {
+            manoString += " ";
+        }
+    }
+    return manoString; // Retorna la cadena que representa la mano
+}
 
-void Mano::agregarCarta(Mazo* mazo) {
+void Mano::agregarCartaM(Mazo* mazo) {
     if (numCartas < maxCartas) {
         Carta* nuevaCarta = mazo->tomarCarta();
         cartas[numCartas++] = nuevaCarta;

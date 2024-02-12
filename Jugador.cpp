@@ -9,7 +9,7 @@ Carta* Jugador::pedirCarta(Mazo* mazo){
     if (!sePaso()) {
         nuevaCarta = mazo->tomarCarta();
         mano->agregarCartaM(mazo);
-        std::cout << nickname << " tomó una carta: " << nuevaCarta->toString() << std::endl;
+        std::cout << nickname << " tomó una carta: "<< std::endl;
     }
     else {
         std::cout << nickname << " no puede recibir más cartas porque se pasó de 21" << std::endl;

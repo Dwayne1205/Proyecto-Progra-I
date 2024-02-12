@@ -21,7 +21,7 @@ public:
 	bool getBocaAbajo();
 	void setBocaAbajo(bool);
 	int getNum();
-	void voltear();
+	/*void voltear();*/
 	std::string toString();
 	int valorCarta();
 };

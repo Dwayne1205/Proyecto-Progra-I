@@ -9,8 +9,7 @@
 #include <iostream>
 #include "GestorJuego.h"
 int main() {
-	JugadorGenerico* j = new Jugador("Dwayne");
-	std::cout << j->getNickname() << '\n';
+	
 	Juego* nj = new Juego();
 	GestorJuego* jG = new GestorJuego(nj);
 	jG->mostrarMenu();

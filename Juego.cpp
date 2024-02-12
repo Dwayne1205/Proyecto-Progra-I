@@ -44,3 +44,12 @@ Nodo* Juego::encontrarJugador(const std::string& nombreJugador) {
 	}
 	return nullptr; // Si no se encuentra el jugador
 }
+void Juego::cargarPartida() {
+	Baraja->cargarMazo();
+	listaJugadores->cargarLista();
+}
+
+void Juego::guardarPartida(const std::string& nombreArchivo) {
+	Baraja->guardarMazo();
+	listaJugadores->guardarLista();
+}

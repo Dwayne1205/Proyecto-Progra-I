@@ -18,6 +18,8 @@ void GestorJuego::empezarPartida() {
         JugadorGenerico* jG = new Jugador(nickname);
         juego->Jugadores(jG);
     }
+    std::cout << "Dealer reparte..." << '\n';
+    repartir();
 }
 GestorJuego::~GestorJuego() {}
 
@@ -25,12 +27,13 @@ GestorJuego::~GestorJuego() {}
 void GestorJuego::mostrarMenu() {
    if(juego){
         int opcion;
-        bool pide;
+        /*bool pide;*/
         do {
             std::cout << "----- BlackJack -----" << std::endl;
             std::cout << "1. Empezar partida" << std::endl;
             std::cout << "2. Realizar ronda" << std::endl;
-            std::cout << "3. Salir" << std::endl;
+            std::cout << "3. Cargar Partida" << std::endl;
+            std::cout << "4. Salir" << std::endl;
             std::cout << "Ingrese su opción: ";
             std::cin >> opcion;
 
@@ -38,8 +41,8 @@ void GestorJuego::mostrarMenu() {
             case 1:
                 
                 empezarPartida();
+                system("pause");
                 system("cls");
-
                 break;
             case 2:
                 realizarRonda();
@@ -67,8 +70,8 @@ void GestorJuego::repartir() {
 				nodoAux->getJugador()->pedirCarta(juego->getBaraja());
 				nodoAux->getJugador()->pedirCarta(juego->getBaraja());
 			
-                if (nodoAux != nullptr&& nodoAux->getJugador()->getNickname()=="Dealer") {
-            nodoAux->getJugador()->getMano()->voltearCarta(1);
+                if (nodoAux != nullptr&& nodoAux->getJugador()->getNickname()=="Dealer"&& nodoAux->getJugador()->getCarta(0)!=nullptr ){
+            nodoAux->getJugador()->getMano()->voltearCarta(0);
 		}
 				nodoAux = nodoAux->getSig();
 		}
@@ -84,13 +87,19 @@ void GestorJuego::realizarRonda() {
         while (nodoAux != nullptr) {
             char opcion;
             bool opcionValida = false; // Variable para verificar si la opción ingresada es válida
+            int puntos;
+            int puntosAux;
+           
             do {
-                std::cout << nodoAux->getJugador()->getNickname() << ":" << std::endl;
-                std::cout << "Mano: " << nodoAux->getJugador()->getMano()->toString() << std::endl;
-                std::cout << "(D)eme carta - (P)asar - (G)uardar Partida - (S)alir" << std::endl;
-                std::cout << "Ingrese su opción: ";
-                std::cin >> opcion;
-
+                if ( nodoAux!=nullptr && nodoAux->getJugador()->getMano()!= nullptr && nodoAux->getJugador()->getMano()->getCartas()!=nullptr) {
+                 
+                    
+                    std::cout << nodoAux->getJugador()->getNickname() << ":" << std::endl;
+                    std::cout << "Mano: " << nodoAux->getJugador()->getMano()->toString() << std::endl;
+                    std::cout << "(D)eme carta - (P)asar - (G)uardar Partida - (S)alir - (M)ostrar Mano Dealer" << std::endl;
+                    std::cout << "Ingrese su opción: ";
+                    std::cin >> opcion;
+                }
                 /*Después de cada acción del jugador, se valida la opción ingresada y se ejecuta la acción correspondiente.
                 El bucle continúa hasta que todos los jugadores hayan tomado su decisión en esta ronda*/
 
@@ -104,6 +113,25 @@ void GestorJuego::realizarRonda() {
                 case 'p':
                     nodoAux = nodoAux->getSig();
                     opcionValida = true;
+                    if (nodoAux!=nullptr && nodoAux->getJugador()->getNickname() == "Dealer")
+                    {
+                        if (nodoAux->getJugador()->getCarta(0) != nullptr) {
+                            nodoAux->getJugador()->getMano()->voltearCarta(0);
+                        }
+                        std::cout << "Dealer voltea la carta oculta: " << '\n';
+                        std::cout << nodoAux->getJugador()->getMano()->toString() << '\n';
+                        if (nodoAux->getJugador()->getMano()->getPuntos() < 17) {
+                            nodoAux->getJugador()->pedirCarta(juego->getBaraja());
+                            std::cout << "El dealer pide..." << '\n';
+                            std::cout << "El dealer tiene" << nodoAux->getJugador()->getMano()->getPuntos() << '\n';
+                        }
+                        else
+                        {
+                            std::cout << "El dealer tiene: " << nodoAux->getJugador()->getMano()->getPuntos() << '\n';
+                        }
+                        getGanador();
+                      
+                    }
                     break;
                 case 'G':
                 case 'g':
@@ -115,6 +143,10 @@ void GestorJuego::realizarRonda() {
                 case 's':
                     std::cout << "Saliendo del juego" << std::endl;
                     exit(0);
+                    break;
+                case 'M':
+                case 'm':
+                    mostrarManoDealer();
                     break;
                 default:
                     std::cout << "Opción no válida. Por favor, ingrese una opción válida." << std::endl;
@@ -137,3 +169,38 @@ void GestorJuego::guardarPartida() {
 		
 	
 
+void GestorJuego::getGanador() {
+    
+    Nodo* nodoAux = juego->getListaJugadores()->getInicio();
+    int puntosDealer = 0;
+    while (nodoAux != nullptr && nodoAux->getJugador()->getNickname() == "Dealer") {
+        puntosDealer = nodoAux->getJugador()->getMano()->getPuntos();
+        nodoAux = nodoAux->getSig();
+    }
+    while (nodoAux != nullptr) {
+        int puntosJugador = nodoAux->getJugador()->getMano()->getPuntos();
+        if (puntosJugador > 21) {
+            std::cout << "El jugador " << nodoAux->getJugador()->getNickname() << " se ha pasado de 21. Pierde." << std::endl;
+        }
+        else if (puntosDealer > 21 || puntosJugador > puntosDealer) {
+            std::cout << "El jugador " << nodoAux->getJugador()->getNickname() << " gana." << std::endl;
+        }
+        else if (puntosJugador == puntosDealer) {
+            std::cout << "El jugador " << nodoAux->getJugador()->getNickname() << " y el dealer empatan." << std::endl;
+        }
+        else {
+            std::cout << "El jugador " << nodoAux->getJugador()->getNickname() << " pierde." << std::endl;
+        }
+        nodoAux = nodoAux->getSig();
+    }
+}
+void GestorJuego::mostrarManoDealer() {
+    Nodo* nodoAux = juego->getListaJugadores()->getInicio();
+    while (nodoAux != nullptr) {
+        if (nodoAux->getJugador()->getNickname() == "Dealer") {
+            std::cout << "El dealer tiene: "<<nodoAux->getJugador()->getMano()->toString();
+
+        }
+        nodoAux = nodoAux->getSig();
+    }
+}

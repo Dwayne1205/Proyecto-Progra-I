@@ -14,6 +14,8 @@ public:
 	void cargarPartida();
 	void guardarPartida();
 	void realizarRonda();
+	void getGanador();
+	void mostrarManoDealer();
 private:
 	int canJugadores;
 	Juego* juego;
